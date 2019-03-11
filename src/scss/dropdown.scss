@@ -1,0 +1,128 @@
+// TODO: simplify
+
+$color-dropdown-border: black !default;
+$color-body: white !default;
+$color-dropdown-hover: lightgrey !default;
+$dropdown-min-width: 200px !default;
+$dropdown-min-width-mobile: 100px !default;
+
+$arrow-width: 15px !default;
+
+$padding-top: 14px !default;
+$padding-top-desktop: 22px !default;
+
+$padding-bottom: 14px !default;
+$padding-bottom-desktop: 22px !default;
+
+$padding-left: 14px !default;
+$padding-left-desktop: 22px !default;
+
+$padding-right: calc(#{$padding-left} + #{$arrow-width} + #{$padding-left}) !default;
+$padding-right-desktop: calc(#{$padding-left-desktop} + #{$arrow-width} + #{$padding-left-desktop}) !default;
+
+$dropdown-options-height: 280px !default;
+
+.dropdown {
+    @include resp(height, (phone: 42px, tablet: 65px));
+    @include z-index(dropdown, 99);
+    position: relative;
+    width: 100%;
+}
+
+.dropdown-activeOption {
+    @include resp(padding-top, (phone: $padding-top, tablet: $padding-top-desktop));
+    @include resp(padding-bottom, (phone: $padding-bottom, tablet: $padding-bottom-desktop));
+    @include resp(padding-left, (phone: $padding-left, tablet: $padding-left-desktop));
+    @include resp(padding-right, (phone: $padding-right, tablet: $padding-right-desktop));
+    @include resp(min-width, (phone: $dropdown-min-width-mobile, tablet: $dropdown-min-width));
+
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: 1px solid $color-dropdown-border;
+    text-align: left;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dropdown-activeOption:hover {
+    transition: all 0.3s ease;
+    border-color: $color-dropdown-hover;
+}
+
+.dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 100%;
+    height: 0;
+    max-height: $dropdown-options-height;
+    background-color: $color-body;
+    list-style-position: inside;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    text-overflow: ellipsis;
+}
+
+.dropdown-option {
+    @include resp(padding-top, (phone: $padding-top, tablet: $padding-top-desktop));
+    @include resp(padding-bottom, (phone: $padding-bottom, tablet: $padding-bottom-desktop));
+    @include resp(padding-left, (phone: $padding-left * 0.6, tablet: $padding-left-desktop * 0.6));
+    @include resp(padding-right, (phone: $padding-left * 0.6, tablet: $padding-left-desktop * 0.6));
+    line-height: 1;
+    cursor: pointer;
+
+    &:last-child {
+        @include resp(margin-bottom, (phone: $padding-left * 0.4, tablet: $padding-left-desktop * 0.4));
+    }
+}
+
+.dropdown-option:hover {
+    transition: all 0.3s ease;
+    background-color: $color-dropdown-hover;
+}
+
+.dropdown-itemArrow {
+    @include resp(width, (phone: 11px, desktop: 15px));
+    @include resp(height, (phone: 14px, desktop: 19px));
+
+    position: absolute;
+    top: 50%;
+    right: $padding-left;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
+
+    @include mq($from: phablet) {
+        right: $padding-left-desktop;
+    }
+}
+
+.dropdown-itemArrowStroke {
+    stroke: $accordion-color-heading;
+    transition: stroke 0.3s ease;
+}
+
+.dropdown-itemArrow {}
+
+.dropdown-isOpen {
+    .dropdown-activeOption {
+        border-color: $color-dropdown-hover;
+    }
+
+    .dropdown-options {
+        @include resp(padding, (phone: $padding-left * 0.4, tablet: $padding-left-desktop * 0.4));
+        border-bottom: 1px solid $color-dropdown-hover;
+        border-left: 1px solid $color-dropdown-hover;
+        border-right: 1px solid $color-dropdown-hover;
+    }
+
+    .dropdown-itemArrow {
+        transform: translateY(-50%) rotateZ(180deg);
+    }
+
+    .dropdown-itemArrowStroke {
+        stroke: $accordion-color-heading-hover;
+    }
+}
