@@ -1,0 +1,54 @@
+$color-button-inactive: grey !default;
+$color-dark: black !default;
+
+.checkbox {
+    @include resp(height, (phone: 42px, tablet: 65px));
+    @include resp(padding, (phone: 10px, tablet: 22px));
+
+    position: relative;
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    border: 1px solid $color-button-inactive;
+    color: $color-button-inactive;
+}
+
+.checkbox:hover {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-color: $color-dark;
+}
+
+.checkbox-isChecked > label {
+    color: $color-dark;
+}
+
+.checkbox > label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.checkbox-input {
+    visibility: hidden;
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.checkbox-span {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 20px;
+    border: 1px solid $color-button-inactive;
+}
+
+[type=checkbox]:checked + span {
+    border-color: $color-dark;
+    background: $color-dark;
+}
