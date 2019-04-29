@@ -3,7 +3,7 @@ import Vue from 'vue';
 import _Dropdown from './components/Dropdown';
 
 export default {
-    registerGlobally() {
+    registerGlobally: function() {
         Vue.component('dropdown', _Dropdown);
     },
 };
