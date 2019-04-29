@@ -1,6 +1,6 @@
 {
     "name": "@y7k/component-dropdown",
-    "version": "1.0.8",
+    "version": "1.0.5",
     "description": "A Vue Dropdown UI component",
     "main": "src/js/main.js",
     "scripts": {
@@ -8,7 +8,7 @@
         "lint": "eslint --ext .js,.vue src/js/main.js",
         "lintfix": "eslint --fix --ext .js,.vue src/js/main.js",
         "stylelint": "stylelint src/scss",
-        "postpublish": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag v$PACKAGE_VERSION"
+        "postpublish": "git push --tags"
     },
     "repository": {
         "type": "git",
