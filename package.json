@@ -8,7 +8,7 @@
         "lint": "eslint --ext .js,.vue src/js/main.js",
         "lintfix": "eslint --fix --ext .js,.vue src/js/main.js",
         "stylelint": "stylelint src/scss",
-        "postpublish": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag v$PACKAGE_VERSION && git push --tags"
+        "postpublish": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag v$PACKAGE_VERSION"
     },
     "repository": {
         "type": "git",
