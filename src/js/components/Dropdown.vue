@@ -23,7 +23,7 @@
         props: {
             options: {
                 type: Array,
-                required: true,
+                required: false,
             },
             value: {
                 type: [String, Number],
@@ -45,7 +45,7 @@
 
         computed: {
             activeOption() {
-                return this.options.find(option => option.value === this.value);
+                return this.options ? this.options.find(option => option.value === this.value) : null;
             },
 
 
